@@ -1,0 +1,109 @@
+<%- include ("./partials/_header") -%>
+    <div class="container">
+        <!-- formulario agregar empleado -->
+        <div class="col-md-5 m-auto">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/add" method="POST">
+                        <div class="form-group">
+                            <label for="antiguedad">NOMBRE</label>
+                            <input type="text" class="form-control" name="name" placeholder="Insertar">
+                        </div>
+                        <div class="form-group">
+                            <label for="antiguedad">APELLIDOS</label>
+                            <input type="text" class="form-control" name="lastname" placeholder="Insertar">
+                        </div>
+                        <div class="form-group">
+                            <label for="antiguedad">CEDULA</label>
+                            <input type="number" class="form-control" name="cedula" placeholder="Insertar">
+                        </div>
+                        <div class="form-group">
+                            <label for="antiguedad">NACIMIENTO</label>
+                            <input type="date" class="form-control" name="fechanacimiento" placeholder="Insertar">
+                        </div>
+                        <div class="form-group">
+                            <label for="antiguedad">NMEROS DE CLIENTES</label>
+                            <input type="number" class="form-control" name="clientes" placeholder="Insertar">
+                        </div>
+                        <div class="form-group">
+                            <label for="antiguedad">ANTIGUEDAD</label>
+                            <select class="form-control" id="antiguedad" name="antiguedad">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9 </option>
+                                <option>10 </option>
+                                <option>11</option>
+                                <option>12</option>
+                                <option>13</option>
+                                <option>14</option>
+                                <option>15</option>
+                                <option>+15</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="antiguedad">TIPO DE EMPLEADO</label>
+                            <select class="form-control" id="antiguedad" name="tipo">
+                                <option>Fijo</option>
+                                <option>Comision</option>
+                            </select>
+                        </div>
+                        <div class="m-auto">
+                            <button class="btn btn-primary" type="submit">
+                                Add
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- views de los empleados -->
+        <div class="col-md-12 m-auto">
+            <table class="table table-bordered table-hover mt-5">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Cedula</th>
+                        <th>Nacimiento</th>
+                        <th>Antiguedad</th>
+                        <th>Tipo de Empleado</th>
+                        <th>Clientes</th>
+                        <th>Sueldo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i = 0; i < empleados.length; i++) { %>
+                        <tr>
+                            <td><%= i + 1 %></td>
+                            <td><%= empleados[i].name %></td>
+                            <td><%= empleados[i].lastname %></td>
+                            <td><%= empleados[i].cedula %></td>
+                            <td><%= empleados[i].fechanacimiento %></td>
+                            <td><%= empleados[i].antiguedad %> Años</td>
+                            <td><%= empleados[i].tipo %></td>
+                            <td><%= empleados[i].clientes %></td>
+                            <td>$ 0 <a href="/calcular" class="btn btn-info">Value</a></td>
+                            <td>
+                                <a href="/clientes/<%= empleados[i].cedula %>" class="btn btn-success">Clientes</a>
+                                <a href="/delete/<%= empleados[i]._id %>" class="btn btn-danger">Borrar</a>
+                            </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+<%- include ("./partials/_footer") -%>
+
+
+
